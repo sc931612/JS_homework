@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI計算機</title>
+    <style>
+        body {
+            margin-top: 50px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>BMI計算機</h2>
+
+
+
+    <form style="border: 5px solid gray; padding:10px;width: 350px;">
+        <input type="text" id="height" placeholder="請輸入身高(單位:cm)">
+        <input type="text" id="weight" placeholder="請輸入體重(單位:kg)">
+        </br>
+        <input type="button" id="do" value="計算結果" style="height: 30px;width: 200px;color: blue;margin-top: 5px;"
+            onclick="getUserData();">
+
+    </form>
+
+
+
+    <script>
+        function getUserData() {
+            const user_height = document.getElementById("height");
+            const theHeight = user_height.value;
+            const user_weight = document.getElementById("weight");
+            const theWeight = user_weight.value;
+            // alert(`你的身高是 ${theHeight} ; 體重是 ${theWeight}`);
+
+            const BMI = Number(theWeight) / (Number(theHeight) * Number(theHeight) / 10000);
+
+            if (BMI < 18.5) {
+                window.alert("過輕");
+            } else if (BMI < 24) {
+                window.alert("正常");
+            } else if (BMI < 27) {
+                window.alert("過重");
+            } else if (BMI < 30) {
+                window.alert("輕度肥胖");
+            } else if (BMI < 35) {
+                window.alert("中度肥胖");
+            } else {
+                window.alert("重度肥胖");
+            }
+            console.log(BMI);
+        };
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

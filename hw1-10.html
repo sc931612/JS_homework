@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>年齡計算機</title>
+</head>
+
+<body>
+    <h3>看你有多老!!!!!!</h3>
+    <input type="text" id="year" placeholder="請輸入出生年(西元)">
+    <input type="text" id="month" placeholder="請輸入出生月">
+    <input type="text" id="day" placeholder="請輸入出生日">
+    <input type="button" id="go" value="看結果" onclick="doMath()">
+    <p id="result"></p>
+
+
+
+    <script>
+        const birthYear = document.getElementById("year");
+        const birthMonth = document.getElementById("month");
+        const birthDay = document.getElementById("day");
+        const toDay = new Date();
+        const thisDay = toDay.getDate();
+        const thisMonth = toDay.getMonth() + 1;
+        const thisYear = toDay.getFullYear();
+        //console.log(thisDay);
+
+
+        function doMath() {
+            if (birthYear.value > thisYear) {
+                result.innerHTML = `不要亂填!`;
+                return;
+            } else if (birthYear.value == thisYear && birthMonth.value > thisMonth) {
+                result.innerHTML = `不要亂填!`;
+                return;
+            } else if (birthYear.value == thisYear) {
+                if (birthMonth.value == thisMonth && birthDay.value > thisDay) {
+                    result.innerHTML = `不要亂填!`;
+                    return;
+                }
+            } else;
+
+            if (birthYear.value == thisYear) {
+                result.innerHTML = `今年出生的小可愛你還未足歲~`;
+            } else if (birthMonth.value == thisMonth && birthDay.value > thisDay) {
+                result.innerHTML = `你今年"${thisYear - birthYear.value - 1}歲"`;
+            } else if (birthMonth.value > thisMonth) {
+                result.innerHTML = `你今年"${thisYear - birthYear.value - 1}歲"`;
+            } else {
+                result.innerHTML = `你今年"${thisYear - birthYear.value}歲"`
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

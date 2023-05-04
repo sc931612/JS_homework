@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電子信箱檢查</title>
+</head>
+
+<body>
+    <label for="email">電子信箱:</label>
+    <input type="text" id="email">
+    <input type="button" value="檢查格式" id="check">
+    <div>請在上面輸入電子信箱</div>
+    <p></p>
+
+    <script>
+
+        let p1 = document.querySelector("p");
+        let user_input = document.getElementById("email");
+
+        check.addEventListener("click", () => {
+            console.log(user_input.value);
+
+
+            let at_count = 0;
+            let dot_count = 0;
+
+
+
+            for (i in user_input.value) {
+
+                //判斷有無@ 有就+1
+                if (user_input.value[i] == "@") {
+                    at_count += 1;
+                }
+
+                if (user_input.value[i] == ".") {
+                    dot_count += 1;
+                }
+
+            };
+
+
+            if (at_count >= 1 && dot_count >= 1) {
+
+                if (at_count > 1 || user_input.value.indexOf("@") == 0) {
+                    p1.innerHTML = "請輸入正確格式(@數量不能大於1且@不能在第一個字元)";
+                } else if (user_input.value.lastIndexOf(".") + 3 > user_input.value.length) {
+                    p1.innerHTML = "請輸入正確格式(\".\"後至少要有2~3個字元)";
+                } else {
+                    p1.innerHTML = "信箱格式正確";
+                }
+
+            } else {
+                p1.innerHTML = "請輸入正確格式(有要@且至少包含一個\".\")";
+            }
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>

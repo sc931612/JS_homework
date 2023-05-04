@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判斷閏年</title>
+</head>
+
+<body>
+    <script>
+        const year = parseInt(window.prompt("輸入西元年,判斷是否是閏年~"));
+
+        if ((year % 400) == 0) {
+            window.alert(`${year} 年是閏年哦~~~`);
+        } else if ((year % 100) != 0 && (year % 4) == 0) {
+            window.alert(`${year} 年是閏年哦~~~`);
+        } else {
+            window.alert(`${year} 年是平年哦~~~`);
+        }
+
+
+    </script>
+
+</body>
+
+</html>

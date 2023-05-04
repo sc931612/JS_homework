@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>種樹</title>
+    <style>
+        body {
+            margin-top: 50px;
+            margin-left: 20px;
+        }
+
+        h2 {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>來種棵樹吧!</h2>
+    <form>
+        <label for="height">想種多高來個數字吧!</label>
+        </br>
+        <input type="text" id="height" placeholder="(請輸入5~30的整數)" style="width: 200px;">
+        <input type="button" id="sent" value="種樹GO" onclick="getATREE()">
+    </form>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+
+
+    <script>
+        function getATREE() {
+            const user_input = document.getElementById("height");
+            const treeHeight = user_input.value
+            // console.log(treeHeight);
+            let printTree = document.querySelectorAll(".tree")
+            // printTree.innerHTML = "<h2>treeHeight</h2>";
+
+
+            if (treeHeight < 5) {
+                window.alert("太小顆了啦!");
+            }
+
+            else if (treeHeight <= 30) {
+
+                for (i = 1; i <= (treeHeight - 2); i++) {
+                    let space = "";
+                    let leaf = "";
+                    for (j = (treeHeight - 2 - i); j > 0; j--) {
+                        space += "&ensp;";
+                    }
+                    for (k = 0; k < ((2 * i) - 1); k++) {
+                        leaf += "*";
+                    }
+
+                    // console.log(`${space}${leaf}\n`);
+
+
+                    printTree[i - 1].innerHTML = "<h2 style=\"color:green;text-shadow:2px 2px 5px green,-2px -2px 5px green,2px -2px 5px green,-2px 2px 5px green;\">" + space + leaf + "\n</h2>";
+
+                }
+
+                let trunkLength = 0;
+
+                while (trunkLength < 2) {
+                    trunkLength++;
+                    let space1 = "";
+                    for (i = 1; i < (treeHeight - 2); i++) {
+                        space1 += "&ensp;";
+                    }
+                    // console.log(`${space1}^`)
+                    for (i = 0; i < 2; i++) {
+                        printTree[(treeHeight - 2 + i)].innerHTML = "<h2 style=\"color:brown;text-shadow:2px 2px 5px brown,-2px -2px 5px brown,2px -2px 5px brown,-2px 2px 5px brown;\">" + space1 + "*\n</h2>";
+                    }
+
+                }
+
+            }
+            else {
+                window.alert("太大顆了啦!");
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

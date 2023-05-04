@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密碼檢查</title>
+</head>
+
+<body>
+    <label for="password">密碼:</label>
+    <input type="text" id="password">
+    <input type="button" value="檢查格式" id="check">
+    <div>請輸入密碼:須包含特殊符號、大寫英文、小寫英文及數字，且密碼長度為8碼以上</div>
+    <p></p>
+
+    <script>
+
+        let p1 = document.querySelector("p");
+        let psw = document.getElementById("password");
+
+        check.addEventListener("click", () => {
+            console.log(psw.value);
+
+            // 特殊符號字典
+
+            const ascii_sign = { 33: "!", 34: "\"", 35: "#", 36: "$", 37: "%", 38: "&", 39: "\'", 40: "(", 41: ")", 42: "*", 43: "+", 44: ",", 45: "-", 46: ".", 47: "/", 58: ":", 59: ";", 60: "<", 61: "=", 62: ">", 63: "?", 64: "@", 91: "[", 92: "\\", 93: "]", 94: "^", 95: "_", 96: "`", 123: "{", 124: "|", 125: "}", 126: "~" };
+
+
+            let sign = 0;
+            let upper = 0;
+            let lower = 0;
+            let num = 0;
+
+
+            for (i in psw.value) {
+
+                //判斷有無特殊符號 有就令變數sign為1
+                if (psw.value[i].charCodeAt() in ascii_sign) {
+                    sign = 1;
+                }
+
+                //判斷有無大寫英文 有就令變數upper為1
+                if (psw.value[i].charCodeAt() >= 65 && psw.value[i].charCodeAt() <= 90) {
+                    upper = 1;
+                }
+
+                //判斷有無小寫英文 有就令變數lower為1
+                if (psw.value[i].charCodeAt() >= 97 && psw.value[i].charCodeAt() <= 122) {
+                    lower = 1;
+                }
+
+                //判斷有數字 有就令變數num為1
+                if (psw.value[i].charCodeAt() >= 48 && psw.value[i].charCodeAt() <= 57) {
+                    num = 1;
+                }
+
+            };
+
+
+            let sum = sign + upper + lower + num;
+
+            if (psw.value.length < 8) {
+                p1.innerHTML = "請輸入8個字元以上的密碼";
+            } else {
+
+                if (sum == 4) {
+                    console.log(sign);
+                    p1.innerHTML = "格式正確~可以使用!!";
+                } else {
+                    p1.innerHTML = "格式錯誤~請依格式重新輸入!!";
+                }
+            }
+
+
+        });
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

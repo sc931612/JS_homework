@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>溫度轉換</title>
+
+</head>
+
+<body>
+
+    <h3 style="color:tomato">老師抱歉...作業1到5雖然有想到更好的寫法但是暫時不回去修了QQ</h3>
+    <input type="text" id="temp">
+    <input type="button" value="°F to °C" onclick="toC()">
+    <input type="button" value="°C to °F" onclick="toF()">
+    <p id="result"></p>
+
+
+    <script>
+
+        alert("老師抱歉~沒時間回去改前面了m( _ _ )m");
+
+        const user_input = document.getElementById("temp");
+        //console.log(typeof user_input.value)
+        //value資料型態是string, 所以就算打0也是string"0",判斷為真
+
+        function toC() {
+            while (Number(user_input.value) || user_input.value === "0") {
+                let result = document.getElementById("result");
+                let a = Math.round(((Number(user_input.value) - 32) / 9 * 5 * 10)) / 10;
+                result.innerHTML = `${user_input.value}°C = ${a}°F`;
+                break;
+            }
+        }
+
+
+        function toF() {
+            while (Number(user_input.value) || user_input.value === "0") {
+                let result = document.getElementById("result");
+                let a = Math.round(((Number(user_input.value) / 5 * 9) + 32) * 10) / 10;
+                result.innerHTML = `${user_input.value}°F = ${a}°C`;
+                break;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

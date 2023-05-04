@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用正則表達式改寫</title>
+</head>
+
+<body>
+    <div>
+        <label for="email">電子信箱:</label>
+        <input type="text" id="email">
+        <p id="p1"></p>
+    </div>
+    <div>
+        <label for="password">密碼:</label>
+        <input type="text" id="password">
+        <p id="p2"></p>
+    </div>
+
+    <script>
+
+        const input_email = document.getElementById("email");
+        const input_psw = document.getElementById("password");
+
+
+        const email_check = /^[^@\.]+@([^@\.]+\.)+[^@\.]{2,3}$/;
+        const psw_sign = /\W/;   //除了 _ 之外的符號
+        const psw_upper = /[A-Z]/;
+        const psw_lower = /[a-z]/;
+        const psw_num = /\d/;
+
+
+
+        input_email.addEventListener("change", () => {
+
+            if (email_check.test(input_email.value) == true) {
+                p1.innerHTML = `${input_email.value} 信箱格式正確`;
+            } else {
+                p1.innerHTML = `${input_email.value} 請檢查信箱格式`;
+            }
+
+
+        });
+
+        input_psw.addEventListener("change", () => {
+
+            let pass =
+                psw_sign.test(input_psw.value) +
+                psw_upper.test(input_psw.value) +
+                psw_lower.test(input_psw.value) +
+                psw_num.test(input_psw.value)
+
+            if (input_psw.value.length >= 8) {
+
+                if (pass != 4) {
+                    p2.innerHTML = `${input_psw.value} 非正確格式,請輸入正確格式`;
+                } else {
+                    p2.innerHTML = `${input_psw.value} 密碼格式正確`;
+                }
+
+            } else {
+                p2.innerHTML = `${input_psw.value} 請輸入至少8位數的密碼`;
+            }
+
+            //console.log(input_psw.value.match(psw_sign).index);
+
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
